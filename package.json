@@ -1,0 +1,24 @@
+{
+  "name": "fh-backend",
+  "version": "1.0.0",
+  "description": "API for FH-SWF Bib-Rerservation Tool",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "apiStart": "nodemon server.js"
+  },
+  "author": "Pascal Hajda",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "6.0.12",
+    "@hapi/joi": "^17.1.1",
+    "@babel/core": "^7.12.9",
+    "dotenv": "^16.0.1",
+    "lite-server": "^2.3.0",
+    "nodemon": "^1.19.4",
+    "bcryptjs": "^2.4.3"
+  },
+  "devDependencies": {}
+}
