@@ -55,8 +55,23 @@ router.get("/:id", getUser, (req, res) => {
 // Update one user
 router.patch("/:id", getUser, async (req, res) => {
   if (req.body.name != null) {
-    res.user.name = req.body.name;
+    res.user.reservations.push({
+      roomNumber: "0",
+      timeSlot: "Test",
+      pending: false,
+    });
   }
+
+  try {
+    const updatedUser = await res.user.save();
+    res.json(updatedUser);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+router.patch("/permission/:id", getUser, async (req, res) => {
+  res.user.is_admin = !res.user.is_admin;
 
   try {
     const updatedUser = await res.user.save();
