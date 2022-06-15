@@ -10,12 +10,14 @@ services:
       dockerfile: ./Dockerfile
     environment:
       NODE_ENV: production
-    ports:
-      - 1337:3000
     links:
       - mongo
   mongo:
     container_name: mongo
     image: mongo
-    ports:
-      - "27017:27017"
+    
+
+networks:
+  default:
+    external:
+      name: nginxproxymanager_default

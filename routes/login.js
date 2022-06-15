@@ -34,11 +34,18 @@ router.post("/", async (req, res) => {
       return res.status(400).json({ message: "E-Mail or password is wrong" });
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
     console.log("User: " + user.name + " logged in");
-    res.header("auth-token", token).json({ token: token, user: user });
+    if(user.is_admin == true){
+      res.header("auth-token", token).json({ token: token, user: user, admin: user.is_admin });
+    }
+    else {
+      res.header("auth-token", token).json({ token: token, user: user });
+    }
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
+
+
 
 async function getUser(req, res, next) {
   let user;

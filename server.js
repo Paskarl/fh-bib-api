@@ -22,9 +22,11 @@ const usersRouter = require("./routes/users");
 const loginRouter = require("./routes/login");
 const registerRouter = require("./routes/register");
 const resRouter = require("./routes/reservation");
+const logoutRouter = require("./routes/logout")
 app.use("/users", usersRouter);
 app.use("/login", loginRouter);
 app.use("/register", registerRouter);
 app.use("/reservation", resRouter);
+app.use("/logout", logoutRouter)
 
 app.listen(port, () => console.log("API is ready to use"));

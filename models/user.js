@@ -5,10 +5,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  matrNumber: {
-    type: String,
-    require: true,
-  },
   email: {
     type: String,
     required: true,
@@ -25,6 +21,26 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  is_admin: {
+    type: Boolean,
+    default: false,
+  },
+  reservations: [
+    {
+      roomNumber: {
+        type: String,
+        default: 0,
+      },
+      timeSlot: {
+        type: String,
+        default: 0,
+      },
+      pending: {
+        type: Boolean,
+        default: true,
+      },
+    },
+  ],
 });
 
 module.exports = mongoose.model("User", userSchema);
